@@ -180,8 +180,9 @@ app.listen(port, () => {
   console.log(`Supplier API listening at http://localhost:${port}`);
 });
 
-### Appendix C: 
-Azure Function trigger source code: C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js
+### Appendix C: Azure Function trigger source code
+Path: 'C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js
+
 <pre><code>```javascript //
 const { app } = require('@azure/functions');
 const axios = require('axios');
