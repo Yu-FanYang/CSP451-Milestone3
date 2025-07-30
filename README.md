@@ -13,14 +13,9 @@
   Stock: ${currentStock}
   Correlation ID: ${correlationId}*
 
-## Logs demonstrating correlation ID traceability
-
-## Instructions to deploy and test
-- The following will record: 1. Instructions and steps to deploy Frontend, Backend, Azure Function 2. Validate the logs and tracceability
 
 
-
-### Create a Supplier API Microservice
+## Create a Supplier API Microservice
 
 ### 1. Create Storage Account and Storage Queue
 ```
@@ -31,16 +26,15 @@ az storage account create --name $SAN --resource-group $RGN --location $LOC --sk
 az storage queue create --name product-stock-events --account-name $SAN
 ```
 
-- Output connection string by running the following
-az storage account show-connection-string --name $SAN --resource-group $RGN --query 'connectionString' --output tsv
+Output connection string by running the following
+`az storage account show-connection-string --name $SAN --resource-group $RGN --query 'connectionString' --output tsv`
 
 
 ### 2. Create a VM on Azure portal 
-- Get the Public IP and SSH into VM
-- Generate ssh key from local computer in order to upload the local files to VM: ssh-keygen -t rsa -b 4096
+Get the Public IP and SSH into VM
+Generate ssh key from local computer in order to upload the local files to VM: ssh-keygen -t rsa -b 4096
   
 ### 3. Create a new Dockerized supplier-api with the following scripts
-- App.js, Dockerfile, docker-compose.yml
 
 ### App.js
 ```
@@ -84,7 +78,8 @@ services:
 
 
 ### 4. Deploy to the same Azure VM via docker-compose
-- Run the following commands to install docker-compose
+Run the following commands to install docker-compose
+```
   sudo apt-get update
   sudo apt-get install ca-certificates curl gnupg lsb-release
   sudo mkdir -m 0755 -p /etc/apt/keyrings
@@ -94,43 +89,46 @@ services:
   sudo apt-get update
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   sudo usermod -aG docker azureuser
-- Then exit the VM and reconnect
+```
+Then exit the VM and reconnect
 
 ### 5. Confirm docker version
-docker --version
-docker compose version
+`docker --version`
+`docker compose version`
 
 ### 6.	Upload the supplier-api and docker-compose files from local machine to VM
-- Use the SSH generated earlier
-- copy supplier-api folder to VM: scp -r ./supplier-api azureuser@57.158.26.57:/home/azureuser/
-- copy docker-compose.yml to VM: scp ./docker-compose.yml azureuser@57.158.26.57:/home/azureuser/
+Use the SSH generated earlier
+Copy supplier-api folder to VM: `scp -r ./supplier-api azureuser@57.158.26.57:/home/azureuser/`
+Copy docker-compose.yml to VM: `scp ./docker-compose.yml azureuser@57.158.26.57:/home/azureuser/`
 
 ### 7.	Start Docker service
 
-### Create an Azure Function Subscriber
+## Create an Azure Function Subscriber
 ### 1. Create an Azure Function with a trigger
 - Create Function App
+```
 $RGN="csp451-yyang334"
 $LOC="eastasia"
 $SAN="yyang334storage"
 $FAPPN="yyang334app"
 az functionapp create --resource-group $RGN --consumption-plan-location $LOC --name $FAPPN --storage-account $SAN --runtime node --runtime-version 22 --functions-version 4
+```
 
-### Enable Tracceability and Log Output
+## Enable Tracceability and Log Output
 ### 1.	Use Azure Monitor to trace end-to-end flow
-- Enable Azure Monitor traceability from Azure portal
-- Azure portal> Monitor > Virtual Machine > Enable
+Enable Azure Monitor traceability from Azure portal
+Azure portal> Monitor > Virtual Machine > Enable
 
 ### 2.	Trace log output from Function app
-- From Function app > Log Stream > shows “Connected”
-- Run node index.js to trigger function
+From Function app > Log Stream > shows “Connected”
+Run `node index.js` to trigger function
 
 
 ### 3.	Check log output from Backend, Function App, and Supplier API with correlation ID
-- Please refer to the documents for the screenshots for log output from Backend, Function App, and Supplier API
+Please refer to the documents for the screenshots for log output from Backend, Function App, and Supplier API
 
 
-### Source code
+## Source code
 
 ### Appendix A: Backend service source code
 Path: `C:\yyang334\smartretail-project\backend\index.js`
