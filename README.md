@@ -8,6 +8,7 @@
 
 ### Event type chosen and why (Queue/Service Bus/Event Grid)
 
+
 ### Message format and flow
 - Message format from backend: *product: ${productName}
   Stock: ${currentStock}
@@ -34,9 +35,9 @@ Output connection string by running the following:
 - Get the Public IP and SSH into VM
 - Generate ssh key from local computer in order to upload the local files to VM: `ssh-keygen -t rsa -b 4096`
   
-### 3. Create a new Dockerized supplier-api with the following scripts
+3. Create a new Dockerized supplier-api with the following scripts:
 
-### App.js
+- App.js
 ```
 const express = require('express');
 const app = express();
@@ -54,7 +55,7 @@ app.listen(port, () => {
 });
 ```
 
-### Dockerfile
+- Dockerfile
 ```
 FROM node:18-alpine
 WORKDIR /app
@@ -65,7 +66,7 @@ EXPOSE 3000
 CMD ["node", "app.js"]
 ```
 
-### docker-compose.yml
+- docker-compose.yml
 ```
 version: '3.8' 
 services:
@@ -77,8 +78,8 @@ services:
 ```
 
 
-### 4. Deploy to the same Azure VM via docker-compose
-Run the following commands to install docker-compose
+4. Deploy to the same Azure VM via docker-compose
+Run the following commands to install docker-compose:
 ```
   sudo apt-get update
   sudo apt-get install ca-certificates curl gnupg lsb-release
@@ -92,19 +93,19 @@ Run the following commands to install docker-compose
 ```
 Then exit the VM and reconnect
 
-### 5. Confirm docker version
+5. Confirm docker version
 `docker --version`
 `docker compose version`
 
-### 6.	Upload the supplier-api and docker-compose files from local machine to VM
+6.	Upload the supplier-api and docker-compose files from local machine to VM
 Use the SSH generated earlier
 Copy supplier-api folder to VM: `scp -r ./supplier-api azureuser@57.158.26.57:/home/azureuser/`
 Copy docker-compose.yml to VM: `scp ./docker-compose.yml azureuser@57.158.26.57:/home/azureuser/`
 
-### 7.	Start Docker service
+7.	Start Docker service
 
-## Create an Azure Function Subscriber
-### 1. Create an Azure Function with a trigger
+### Create an Azure Function Subscriber
+Create an Azure Function with a trigger
 - Create Function App
 ```
 $RGN="csp451-yyang334"
@@ -114,21 +115,21 @@ $FAPPN="yyang334app"
 az functionapp create --resource-group $RGN --consumption-plan-location $LOC --name $FAPPN --storage-account $SAN --runtime node --runtime-version 22 --functions-version 4
 ```
 
-## Enable Tracceability and Log Output
-### 1.	Use Azure Monitor to trace end-to-end flow
+### Enable Tracceability and Log Output
+1.	Use Azure Monitor to trace end-to-end flow
 Enable Azure Monitor traceability from Azure portal
 Azure portal> Monitor > Virtual Machine > Enable
 
-### 2.	Trace log output from Function app
+2.	Trace log output from Function app
 From Function app > Log Stream > shows “Connected”
 Run `node index.js` to trigger function
 
 
-### 3.	Check log output from Backend, Function App, and Supplier API with correlation ID
+3.	Check log output from Backend, Function App, and Supplier API with correlation ID
 Please refer to the documents for the screenshots for log output from Backend, Function App, and Supplier API
 
 
-## Source code
+### Source code
 
 ### Appendix A: Backend service source code
 Path: `C:\yyang334\smartretail-project\backend\index.js`
