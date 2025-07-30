@@ -183,8 +183,7 @@ app.listen(port, () => {
 ### Appendix C: Azure Function trigger source code
 Path: `C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js`
 
-javascript //
-const { app } = require('@azure/functions');
+javascript // const { app } = require('@azure/functions');
 const axios = require('axios');
 app.storageQueue('SimpleQueueProcessor', {
     //queueName: 'js-queue-items',
