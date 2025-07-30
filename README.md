@@ -27,7 +27,7 @@ az storage account create --name $SAN --resource-group $RGN --location $LOC --sk
 az storage queue create --name product-stock-events --account-name $SAN
 ```
 
-Output connection string by running the following:
+- Output connection string by running the following:
 `az storage account show-connection-string --name $SAN --resource-group $RGN --query 'connectionString' --output tsv`
 
 
