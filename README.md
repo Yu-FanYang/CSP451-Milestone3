@@ -161,8 +161,8 @@ async function simulateStockDecrease() {
 }
 simulateStockDecrease();
 
-### Appendix B:
-Supplier API microservice source code: C:\yyang334\smartretail-project\supplier-api\app.js
+### Appendix B: Supplier API microservice source code
+Path: `C:\yyang334\smartretail-project\supplier-api\app.js`
 // app.js
 const express = require('express');
 const app = express();
@@ -181,9 +181,9 @@ app.listen(port, () => {
 });
 
 ### Appendix C: Azure Function trigger source code
-Path: 'C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js
+Path: `C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js`
 
-<pre><code>```javascript //
+javascript //
 const { app } = require('@azure/functions');
 const axios = require('axios');
 app.storageQueue('SimpleQueueProcessor', {
@@ -212,8 +212,3 @@ app.storageQueue('SimpleQueueProcessor', {
             }
         }
 });
-
-
-
-
-
