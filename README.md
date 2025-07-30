@@ -79,7 +79,7 @@ services:
 
 
 4. Deploy to the same Azure VM via docker-compose
-Run the following commands to install docker-compose:
+- Run the following commands to install docker-compose:
 ```
   sudo apt-get update
   sudo apt-get install ca-certificates curl gnupg lsb-release
