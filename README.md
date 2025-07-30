@@ -91,18 +91,18 @@ services:
   sudo apt-get install docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
   sudo usermod -aG docker azureuser
 ```
-Then exit the VM and reconnect
+5. Then exit the VM and reconnect
 
-5. Confirm docker version
+6. Confirm docker version
 `docker --version`
 `docker compose version`
 
-6.	Upload the supplier-api and docker-compose files from local machine to VM
+7.	Upload the supplier-api and docker-compose files from local machine to VM
 Use the SSH generated earlier
 Copy supplier-api folder to VM: `scp -r ./supplier-api azureuser@57.158.26.57:/home/azureuser/`
 Copy docker-compose.yml to VM: `scp ./docker-compose.yml azureuser@57.158.26.57:/home/azureuser/`
 
-7.	Start Docker service
+8.	Start Docker service
 
 ### Create an Azure Function Subscriber
 Create an Azure Function with a trigger
