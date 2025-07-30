@@ -117,21 +117,21 @@ az functionapp create --resource-group $RGN --consumption-plan-location $LOC --n
 
 ### Enable Tracceability and Log Output
 1.	Use Azure Monitor to trace end-to-end flow
-Enable Azure Monitor traceability from Azure portal
-Azure portal> Monitor > Virtual Machine > Enable
+- Enable Azure Monitor traceability from Azure portal
+- Azure portal> Monitor > Virtual Machine > Enable
 
 2.	Trace log output from Function app
-From Function app > Log Stream > shows “Connected”
-Run `node index.js` to trigger function
+- From Function app > Log Stream > shows “Connected” to make sure Function app is working
+- Run `node index.js` on local machine to trigger function
 
 
 3.	Check log output from Backend, Function App, and Supplier API with correlation ID
-Please refer to the documents for the screenshots for log output from Backend, Function App, and Supplier API
+- Please refer to the documents for the cooresponding screenshots for log output from Backend, Function App, and Supplier API
 
 
 ### Source code
 
-### Appendix A: Backend service source code
+- Appendix A: Backend service source code
 Path: `C:\yyang334\smartretail-project\backend\index.js`
 
 ``` javascript
@@ -170,7 +170,7 @@ async function simulateStockDecrease() {
 simulateStockDecrease();
 ```
 
-### Appendix B: Supplier API microservice source code
+- Appendix B: Supplier API microservice source code
 Path: `C:\yyang334\smartretail-project\supplier-api\app.js`
 
 ``` javascript
@@ -191,7 +191,7 @@ app.listen(port, () => {
 });
 ```
 
-### Appendix C: Azure Function trigger source code
+- Appendix C: Azure Function trigger source code
 Path: `C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js`
 
 ``` javascript
