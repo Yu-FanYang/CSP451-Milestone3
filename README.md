@@ -132,7 +132,7 @@ az functionapp create --resource-group $RGN --consumption-plan-location $LOC --n
 ### Source code
 
 - Appendix A: Backend service source code
-Path: `C:\yyang334\smartretail-project\backend\index.js`
+- Path: `C:\yyang334\smartretail-project\backend\index.js`
 
 ``` javascript
 const { QueueClient } = require("@azure/storage-queue"); 
@@ -171,7 +171,7 @@ simulateStockDecrease();
 ```
 
 - Appendix B: Supplier API microservice source code
-Path: `C:\yyang334\smartretail-project\supplier-api\app.js`
+- Path: `C:\yyang334\smartretail-project\supplier-api\app.js`
 
 ``` javascript
 const express = require('express');
@@ -192,7 +192,7 @@ app.listen(port, () => {
 ```
 
 - Appendix C: Azure Function trigger source code
-Path: `C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js`
+- Path: `C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js`
 
 ``` javascript
 const { app } = require('@azure/functions');
