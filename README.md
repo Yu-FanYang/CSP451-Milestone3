@@ -6,18 +6,18 @@
 - Trace full message flow with logging and correlation IDs
 
 
-## Event type chosen and why (Queue/Service Bus/Event Grid)
+### Event type chosen and why (Queue/Service Bus/Event Grid)
 
-## Message format and flow
+### Message format and flow
 - Message format from backend: *product: ${productName}
   Stock: ${currentStock}
   Correlation ID: ${correlationId}*
 
 
 
-## Create a Supplier API Microservice
+### Create a Supplier API Microservice
 
-### 1. Create Storage Account and Storage Queue
+1. Create Storage Account and Storage Queue
 ```
 $RGN="csp451-yyang334"
 $LOC="eastasia"
@@ -26,13 +26,13 @@ az storage account create --name $SAN --resource-group $RGN --location $LOC --sk
 az storage queue create --name product-stock-events --account-name $SAN
 ```
 
-Output connection string by running the following
+Output connection string by running the following:
 `az storage account show-connection-string --name $SAN --resource-group $RGN --query 'connectionString' --output tsv`
 
 
-### 2. Create a VM on Azure portal 
-Get the Public IP and SSH into VM
-Generate ssh key from local computer in order to upload the local files to VM: ssh-keygen -t rsa -b 4096
+2. Create a VM on Azure portal 
+- Get the Public IP and SSH into VM
+- Generate ssh key from local computer in order to upload the local files to VM: `ssh-keygen -t rsa -b 4096`
   
 ### 3. Create a new Dockerized supplier-api with the following scripts
 
