@@ -22,12 +22,13 @@
 ## Create a Supplier API Microservice
 
 ### 1. Create Storage Account and Storage Queue
-
+```
 $RGN="csp451-yyang334"
 $LOC="eastasia"
 $SAN="yyang334storage"
 az storage account create --name $SAN --resource-group $RGN --location $LOC --sku Standard_LRS --allow-blob-public-access false
 az storage queue create --name product-stock-events --account-name $SAN
+```
 
 - Output connection string by running the following
 az storage account show-connection-string --name $SAN --resource-group $RGN --query 'connectionString' --output tsv
@@ -41,6 +42,7 @@ az storage account show-connection-string --name $SAN --resource-group $RGN --qu
 - App.js, Dockerfile, docker-compose.yml
 
 # App.js
+```
 const express = require('express');
 const app = express();
 const port = 3000; 
@@ -55,24 +57,29 @@ app.post('/order', (req, res) => {
 app.listen(port, () => {
   console.log(`Supplier API listening at http://localhost:${port}`);
 });
+```
 
 # Dockerfile
+```
 FROM node:18-alpine
 WORKDIR /app
 COPY package*.json ./ 
 RUN npm install 
 COPY . . 
 EXPOSE 3000 
-CMD ["node", "app.js"] 
+CMD ["node", "app.js"]
+```
 
 # docker-compose.yml
+```
 version: '3.8' 
 services:
   supplier-api: 
     build: ./supplier-api 
     ports:
       - "3000:3000" 
-    restart: always 
+    restart: always
+```
 
 
 ### 4. Deploy to the same Azure VM via docker-compose
