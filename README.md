@@ -19,7 +19,8 @@
 - The following will record: 1. Instructions and steps to deploy Frontend, Backend, Azure Function 2. Validate the logs and tracceability
 
 
-## Create a Supplier API Microservice
+
+### Create a Supplier API Microservice
 
 ### 1. Create Storage Account and Storage Queue
 ```
@@ -41,7 +42,7 @@ az storage account show-connection-string --name $SAN --resource-group $RGN --qu
 ### 3. Create a new Dockerized supplier-api with the following scripts
 - App.js, Dockerfile, docker-compose.yml
 
-# App.js
+### App.js
 ```
 const express = require('express');
 const app = express();
@@ -59,7 +60,7 @@ app.listen(port, () => {
 });
 ```
 
-# Dockerfile
+### Dockerfile
 ```
 FROM node:18-alpine
 WORKDIR /app
@@ -70,7 +71,7 @@ EXPOSE 3000
 CMD ["node", "app.js"]
 ```
 
-# docker-compose.yml
+### docker-compose.yml
 ```
 version: '3.8' 
 services:
@@ -106,7 +107,7 @@ docker compose version
 
 ### 7.	Start Docker service
 
-## Create an Azure Function Subscriber
+### Create an Azure Function Subscriber
 ### 1. Create an Azure Function with a trigger
 - Create Function App
 $RGN="csp451-yyang334"
@@ -115,7 +116,7 @@ $SAN="yyang334storage"
 $FAPPN="yyang334app"
 az functionapp create --resource-group $RGN --consumption-plan-location $LOC --name $FAPPN --storage-account $SAN --runtime node --runtime-version 22 --functions-version 4
 
-## Enable Tracceability and Log Output
+### Enable Tracceability and Log Output
 ### 1.	Use Azure Monitor to trace end-to-end flow
 - Enable Azure Monitor traceability from Azure portal
 - Azure portal> Monitor > Virtual Machine > Enable
@@ -129,7 +130,7 @@ az functionapp create --resource-group $RGN --consumption-plan-location $LOC --n
 - Please refer to the documents for the screenshots for log output from Backend, Function App, and Supplier API
 
 
-## Source code
+### Source code
 
 ### Appendix A: Backend service source code
 Path: `C:\yyang334\smartretail-project\backend\index.js`
