@@ -99,8 +99,8 @@ services:
 
 7.	Upload the supplier-api and docker-compose files from local machine to VM
 Use the SSH generated earlier
-Copy supplier-api folder to VM: `scp -r ./supplier-api azureuser@57.158.26.57:/home/azureuser/`
-Copy docker-compose.yml to VM: `scp ./docker-compose.yml azureuser@57.158.26.57:/home/azureuser/`
+- Copy supplier-api folder to VM: `scp -r ./supplier-api azureuser@57.158.26.57:/home/azureuser/`
+- Copy docker-compose.yml to VM: `scp ./docker-compose.yml azureuser@57.158.26.57:/home/azureuser/`
 
 8.	Start Docker service
 
