@@ -124,9 +124,10 @@ az functionapp create --resource-group $RGN --consumption-plan-location $LOC --n
 
 ## Source code
 
-### Appendix A: 
-Backend service source code: C:\yyang334\smartretail-project\backend\index.js
-// index.js
+### Appendix A: Backend service source code
+Path: `C:\yyang334\smartretail-project\backend\index.js`
+
+``` javascript
 const { QueueClient } = require("@azure/storage-queue"); 
 const { v4: uuidv4 } = require('uuid'); 
 const connectionString = "XXX";
@@ -160,10 +161,12 @@ async function simulateStockDecrease() {
   await emitProductStockEvent("Keyboard", 8); 
 }
 simulateStockDecrease();
+```
 
 ### Appendix B: Supplier API microservice source code
 Path: `C:\yyang334\smartretail-project\supplier-api\app.js`
-// app.js
+
+``` javascript
 const express = require('express');
 const app = express();
 const port = 3000; 
@@ -179,6 +182,7 @@ app.post('/order', (req, res) => {
 app.listen(port, () => {
   console.log(`Supplier API listening at http://localhost:${port}`);
 });
+```
 
 ### Appendix C: Azure Function trigger source code
 Path: `C:\yyang334\smartretail-project\test-function-app\src\functions SimpleQueueProcessor.js`
@@ -212,3 +216,4 @@ app.storageQueue('SimpleQueueProcessor', {
             }
         }
 });
+```
