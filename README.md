@@ -7,7 +7,7 @@
 
 
 ### Event type chosen and why (Queue/Service Bus/Event Grid)
-
+I used Azure Storage Queue to finish this project becasue it allows me to efficiently connect to Azure Function with connection string. After it's connected to Azure Function, Function will then connected to VM which is Supplier-api and will notify when to restock inventory. 
 
 ### Message format and flow
 - Message format from backend: *product: ${productName}
