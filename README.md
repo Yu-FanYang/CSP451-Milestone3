@@ -114,6 +114,9 @@ $SAN="yyang334storage"
 $FAPPN="yyang334app"
 az functionapp create --resource-group $RGN --consumption-plan-location $LOC --name $FAPPN --storage-account $SAN --runtime node --runtime-version 22 --functions-version 4
 ```
+Created Queue trigger
+- func init --worker-runtime node --model V4 --docker
+- func new --name ProcessStockEvent --template AzureQueueStorageTrigger --language JavaScript
 
 ### Enable Tracceability and Log Output
 1.	Use Azure Monitor to trace end-to-end flow
