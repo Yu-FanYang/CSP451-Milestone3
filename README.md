@@ -116,7 +116,7 @@ az functionapp create --resource-group $RGN --consumption-plan-location $LOC --n
 ```
 Created Queue trigger
 - func init --worker-runtime node --model V4 --docker
-- func new --name ProcessStockEvent --template AzureQueueStorageTrigger --language JavaScript
+- func new --name SimpleQueueProcessor --template AzureQueueStorageTrigger --language JavaScript
 
 ### Enable Tracceability and Log Output
 1.	Use Azure Monitor to trace end-to-end flow
